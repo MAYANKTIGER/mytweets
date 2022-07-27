@@ -22,13 +22,13 @@ def index():
         until = request.form.get("until")
         keywords = request.form.get("languages")
 
-        print("inside the post", search_words, until, keywords)
+        #print("inside the post", search_words, until, keywords)
 
         data = tweepy.Cursor(api.search_tweets, q=search_words, until=until).items(1000)
         send_item = [[i.user.screen_name, "https://twitter.com/" + i.user.screen_name
                       + "/status/" + str(i.id), i.text, i.created_at]
                      for i in data if keywords in i.text]
-        print(send_item)
+        #print(send_item)
     else:
         send_item = []
     return render_template('index.html', tweets=send_item)
