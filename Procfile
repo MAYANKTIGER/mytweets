@@ -1,1 +1,1 @@
-web: gunicorn app:app --keep-alive INT
+web: gunicorn app:app --keep-alive 5
